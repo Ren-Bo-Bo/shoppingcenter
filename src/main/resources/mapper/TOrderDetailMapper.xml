@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.shoppingcenter.dao.TOrderDetailMapper">
+  <resultMap id="BaseResultMap" type="com.qf.shoppingcenter.entity.TOrderDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_date" jdbcType="DATE" property="goodsDate" />
+    <result column="o_orderid" jdbcType="INTEGER" property="oOrderid" />
+    <result column="goodsid" jdbcType="INTEGER" property="goodsid" />
+    <result column="goodsname" jdbcType="VARCHAR" property="goodsname" />
+    <result column="goodsprice" jdbcType="DOUBLE" property="goodsprice" />
+    <result column="goods_description" jdbcType="VARCHAR" property="goodsDescription" />
+    <result column="goodsnum" jdbcType="INTEGER" property="goodsnum" />
+    <result column="goodspic" jdbcType="VARCHAR" property="goodspic" />
+    <result column="goods_total_price" jdbcType="DOUBLE" property="goodsTotalPrice" />
+    <result column="IsValid" jdbcType="BIT" property="isvalid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, goods_date, o_orderid, goodsid, goodsname, goodsprice, goods_description, goodsnum, 
+    goodspic, goods_total_price, IsValid
+  </sql>
+
+</mapper>

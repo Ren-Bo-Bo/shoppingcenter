@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.shoppingcenter.dao.TGoodsInfoMapper">
+  <resultMap id="TGoodsInfoMap" type="com.qf.shoppingcenter.entity.TGoodsInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_description" jdbcType="VARCHAR" property="goodsDescription" />
+    <result column="goods_pic" jdbcType="VARCHAR" property="goodsPic" />
+    <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
+    <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
+    <result column="goods_price_off" jdbcType="DOUBLE" property="goodsPriceOff" />
+    <result column="goods_discount" jdbcType="DOUBLE" property="goodsDiscount" />
+    <result column="goods_fatherid" jdbcType="INTEGER" property="goodsFatherid" />
+    <result column="goods_parentid" jdbcType="INTEGER" property="goodsParentid" />
+    <result column="IsValid" jdbcType="BIT" property="isvalid" />
+  </resultMap>
+  <sql id="tgoodsinfoColumn">
+    id, goods_name, goods_description, goods_pic, goods_price, goods_stock, goods_price_off, 
+    goods_discount, goods_fatherid, goods_parentid, IsValid
+  </sql>
+  <!--查询商品总记录数-->
+  <select id="findTotalCount" resultType="int">
+        select count(id) from t_goods_info where IsValid='1'
+    </select>
+
+  <!--分页查询商品信息-->
+  <select id="findGoodsByPage" parameterType="com.qf.shoppingcenter.tool.PageTool" resultMap="TGoodsInfoMap">
+    select
+    <include refid="tgoodsinfoColumn"></include>
+    from t_goods_info
+    where IsValid='1'
+    limit #{start},#{pageCount}
+  </select>
+
+  <!--根据商品编号删除商品信息,在数据库表中不是真删除,只是修改商品无效-->
+  <update id="updateGoodsById" parameterType="int">
+   update t_goods_info set IsValid=0 where id=#{id}
+  </update>
+<!--根据商品编号数组修改多个商品信息-->
+  <update id="updateManyGoodsByArray">
+    update t_goods_info set IsValid=0 where id in
+    <foreach separator="," close=")" open="(" collection="array" item="id">#{id} </foreach>
+  </update>
+
+</mapper>

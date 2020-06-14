@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.shoppingcenter.dao.TGoodsTypeMapper">
+  <resultMap id="TGoodsTypeMap" type="com.qf.shoppingcenter.entity.TGoodsType">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="gtype_name" jdbcType="VARCHAR" property="gtypeName" />
+    <result column="gtype_parentid" jdbcType="INTEGER" property="gtypeParentid" />
+    <result column="gtype_pic" jdbcType="VARCHAR" property="gtypePic" />
+    <result column="IsValid" jdbcType="BIT" property="isvalid" />
+  </resultMap>
+
+  <resultMap id="TGoodsTypeDtoMap" type="com.qf.shoppingcenter.dto.TGoodsTypeDto">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="gtype_name" jdbcType="VARCHAR" property="gtypeName" />
+    <result column="gtype_parentid" jdbcType="INTEGER" property="gtypeParentid" />
+    <result column="gtype_pic" jdbcType="VARCHAR" property="gtypePic" />
+    <result column="IsValid" jdbcType="BIT" property="isvalid" />
+    <collection property="childTypeList" column="id" ofType="com.qf.shoppingcenter.entity.TGoodsType" select="selectChildsByParentId">
+    </collection>
+  </resultMap>
+  <sql id="tgoodstypeColumnList">
+    id, gtype_name, gtype_parentid, gtype_pic, IsValid
+  </sql>
+  <select id="findParentAndChild" resultMap="TGoodsTypeMap">
+    select
+  </select>
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.shoppingcenter.dao.TUserMapper">
+  <resultMap id="TUsertMap" type="com.qf.shoppingcenter.entity.TUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="is_admin" jdbcType="BIT" property="isAdmin" />
+    <result column="IsValid" jdbcType="BIT" property="isvalid" />
+  </resultMap>
+  <sql id="tuserColunmList">
+    id, name, password, sex, phone, email, is_admin, IsValid
+  </sql>
+
+  <select id="findUserByAttr" parameterType="com.qf.shoppingcenter.entity.TUser" resultMap="TUsertMap">
+    select
+    <include refid="tuserColunmList"></include>
+    from t_user
+    <where>
+      <if test="id!=null">
+        and id=#{id}
+      </if>
+      <if test="name!=null">
+        and name=#{name}
+      </if>
+      <if test="password!=null">
+        and password=#{password}
+      </if>
+      <if test="sex!=null">
+        and sex=#{sex}
+      </if>
+      <if test="phone!=null">
+        and phone=#{phone}
+      </if>
+      <if test="email!=null">
+        and email=#{email}
+      </if>
+      <if test="isAdmin!=null">
+        and is_admin=#{isAdmin}
+      </if>
+      <if test="isvalid!=null">
+        and isvalid=#{isvalid}
+      </if>
+    </where>
+  </select>
+</mapper>

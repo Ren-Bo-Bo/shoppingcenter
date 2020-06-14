@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+    <!-- 链接数据库的jar包的完整路径，一定要注意跟自己的仓库路径一致 ，注意修改  -->
+    <classPathEntry location="D:\maven\apache-maven-3.6.3\repo\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar" ></classPathEntry>
+    <context id="context1" >
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/1901shoppingcenter?characterEncoding=utf-8"
+                        userId="root"
+                        password="admin123" />
+        <!-- 生成POJO类的位置,targetPackage生成的实体类的包名,targetProject是实体类包名生成的位置 -->
+        <javaModelGenerator targetPackage="com.qf.shoppingcenter.entity" targetProject="src/main/java" />
+        <!-- mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources" />
+        <!-- mapper接口生成的位置 -->
+        <javaClientGenerator targetPackage="com.qf.shoppingcenter.dao" targetProject="src/main/java" type="XMLMAPPER" />
+        <!-- tableName指定数据库表  domainObjectName实体的名称
+      <table  tableName="userinfo" domainObjectName="Userinfo"-->
+			<!--自动生成增删除改查的方法和映射sql例子
+        enableCountByExample="false"
+        enableUpdateByExample="false"
+        enableSelectByExample="false"
+        enableDeleteByExample="false"
+        ></table>
+    -->
+        <table  tableName="t_user" domainObjectName="TUser"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableSelectByExample="false"
+                enableDeleteByExample="false"
+        ></table>
+        <table  tableName="t_address" domainObjectName="TAddress"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableSelectByExample="false"
+                enableDeleteByExample="false"
+        ></table>
+        <table  tableName="t_goods_info" domainObjectName="TGoodsInfo"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableSelectByExample="false"
+                enableDeleteByExample="false"
+        ></table>
+        <table  tableName="t_goods_type" domainObjectName="TGoodsType"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableSelectByExample="false"
+                enableDeleteByExample="false"
+        ></table>
+        <table  tableName="t_order" domainObjectName="TOrder"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableSelectByExample="false"
+                enableDeleteByExample="false"
+        ></table>
+        <table  tableName="t_order_detail" domainObjectName="TOrderDetail"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableSelectByExample="false"
+                enableDeleteByExample="false"
+        ></table>
+
+</context>
+</generatorConfiguration>

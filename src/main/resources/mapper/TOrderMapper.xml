@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.shoppingcenter.dao.TOrderMapper">
+  <resultMap id="BaseResultMap" type="com.qf.shoppingcenter.entity.TOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="o_sendtype" jdbcType="VARCHAR" property="oSendtype" />
+    <result column="o_paytype" jdbcType="VARCHAR" property="oPaytype" />
+    <result column="o_paycount" jdbcType="DOUBLE" property="oPaycount" />
+    <result column="o_orderdate" jdbcType="DATE" property="oOrderdate" />
+    <result column="o_checkstate" jdbcType="INTEGER" property="oCheckstate" />
+    <result column="o_checkdate" jdbcType="DATE" property="oCheckdate" />
+    <result column="o_checkperson" jdbcType="VARCHAR" property="oCheckperson" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="o_shperson" jdbcType="VARCHAR" property="oShperson" />
+    <result column="o_shphone" jdbcType="VARCHAR" property="oShphone" />
+    <result column="o_shaddress" jdbcType="VARCHAR" property="oShaddress" />
+    <result column="IsValid" jdbcType="BIT" property="isvalid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, o_sendtype, o_paytype, o_paycount, o_orderdate, o_checkstate, o_checkdate, o_checkperson, 
+    userid, o_shperson, o_shphone, o_shaddress, IsValid
+  </sql>
+
+</mapper>
